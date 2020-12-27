@@ -60,10 +60,9 @@ tar czf $BackupDIR.tar.gz $BackupDIR
 aws s3 cp $BackupDIR.tar.gz s3://$BUCKET_NAME/$S3DIR/$TIMESTAMP/
 
 if [ $? -eq 0 ]; then
-send_email;
+  echo "Mongodump completed for `date`"
 fi
 
 # Remove Archive DIR
 rm -rf $BackupDIR
 rm $BackupDIR.tar.gz
-
